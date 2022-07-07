@@ -4,7 +4,8 @@
  * @returns number[]
  */
 export const even = (numberArray: number[]) => {
-  return numberArray;
+  const list = numberArray.filter(number => { return number % 2 === 0})
+  return list;
 };
 
 /**
@@ -13,7 +14,8 @@ export const even = (numberArray: number[]) => {
  * @returns number[]
  */
 export const odd = (numberArray: number[]) => {
-  return numberArray;
+  const list = numberArray.filter(number => { return number % 2 !== 0})
+  return list;
 };
 
 /**
@@ -30,5 +32,21 @@ export const multiFunctional = (
   arrayOfNumbers: number[],
   options?: { sortBy?: "even" | "odd"; sortDirection?: "asc" | "desc" }
 ) => {
+
+  if(!options) return [...arrayOfNumbers];
+
+  if(options.sortDirection === "asc"){
+    arrayOfNumbers.sort();
+  }else{
+    arrayOfNumbers.sort();
+    arrayOfNumbers.reverse();
+  }
+
+  if(options.sortBy === "even"){
+    arrayOfNumbers = even(arrayOfNumbers);
+  }else {
+    arrayOfNumbers = odd(arrayOfNumbers);
+  }
+
   return arrayOfNumbers;
 };
